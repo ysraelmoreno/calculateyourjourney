@@ -1,13 +1,15 @@
 import React, { ButtonHTMLAttributes } from "react";
-import { FiPlusCircle } from "react-icons/fi";
+import { IconBaseProps } from "react-icons";
 import { TableButtonContainer } from "./styles";
 
-type TableButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+type TableButtonProps = {
+  icon?: React.ComponentType<IconBaseProps>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-function TableButton({ ...props }: TableButtonProps) {
+function TableButton({ icon: Icon, ...props }: TableButtonProps) {
   return (
     <TableButtonContainer variation="secondary" {...props}>
-      <FiPlusCircle />
+      {Icon && <Icon />}
     </TableButtonContainer>
   );
 }
